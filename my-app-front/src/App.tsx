@@ -1,14 +1,14 @@
 import { ApolloProvider } from '@apollo/client';
 import './App.css';
-import TodoList from './components/todoList';
+import TodoList from './components/TodoList';
 import { apolloClient } from './services/apiService';
 
-function App() {
+const App: React.FC = () => {
   return (
     <ApolloProvider client={apolloClient}>
       <TodoList />
     </ApolloProvider>
   );
-}
+};
 
 export default App;

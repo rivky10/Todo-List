@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import TodoItem from './todoItem';
+import TodoItem from './TodoItem';
 import { Grid, Paper, styled } from '@mui/material';
-import AddTodo from './addTodo';
+import AddTodo from './AddTodo';
 import { GET_TASKS } from '../services/apiService';
 import { actions } from '../features/todoSlice';
 import { useQuery } from '@apollo/client';
@@ -14,11 +14,7 @@ export interface Task {
   iscompleted: boolean;
 }
 
-export interface TaskProps {
-  task: Task;
-}
-
-function TodoList() {
+const TodoList: React.FC = () => {
   const dispatch = useDispatch();
   const todoList = useSelector((state: RootState) => {
     return state.todoSlice.todoList;
@@ -27,18 +23,16 @@ function TodoList() {
   const { data } = useQuery(GET_TASKS);
 
   useEffect(() => {
-    console.log('data', data);
     if (data && todoList.length === 0) {
       dispatch(actions.setTodoList([...data.tasks]));
     }
-
   }, [data, dispatch]);
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
     padding: theme.spacing(1),
-    textAlign: "center",
+    textAlign: 'center',
     color: theme.palette.text.secondary,
   }));
 
@@ -57,6 +51,6 @@ function TodoList() {
       )}
     </Grid>
   );
-}
+};
 
 export default TodoList;

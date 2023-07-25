@@ -5,7 +5,7 @@ import { actions } from '../features/todoSlice';
 import { useMutation } from '@apollo/react-hooks';
 import { ADD_TODO } from '../services/apiService';
 
-function AddTodo() {
+const AddTodo: React.FC = () => {
   const dispatch = useDispatch();
   const [addTask, { data }] = useMutation(ADD_TODO);
 
@@ -22,7 +22,6 @@ function AddTodo() {
 
   useEffect(() => {
     if (data) {
-      console.log(data.addTask);
       dispatch(actions.addTask(data.addTask));
     }
   }, [data]);
@@ -45,6 +44,6 @@ function AddTodo() {
       </Grid>
     </form>
   );
-}
+};
 
 export default AddTodo;

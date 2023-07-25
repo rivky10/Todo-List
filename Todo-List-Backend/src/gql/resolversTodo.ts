@@ -4,8 +4,6 @@ import { Task } from '../entity/todo';
 export const resolversTodo = {
   Query: {
     tasks: async () => {
-      console.log('hi');
-
       const tasksRepository = MyDataSource.getRepository(Task);
       const tasks = await tasksRepository.find({
         order: {
