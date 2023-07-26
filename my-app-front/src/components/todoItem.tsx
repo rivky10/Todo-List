@@ -48,7 +48,7 @@ const TodoItem: React.FC<TaskProps> = ({ task }) => {
             <Checkbox edge="start" checked={task.iscompleted} />
           </ListItemIcon>
           <ListItemText
-            primary={`${task.name}`}
+            primary={task.name}
             style={{
               fontStyle: task.iscompleted ? 'italic' : 'normal',
               textDecorationLine: task.iscompleted ? 'line-through' : 'none',
