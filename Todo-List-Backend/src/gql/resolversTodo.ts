@@ -40,7 +40,6 @@ export const resolversTodo = {
       if (!task) {
         throw new Error('Task not found');
       }
-
       task.iscompleted = !task.iscompleted;
       await tasksRepository.save(task);
       return task;
