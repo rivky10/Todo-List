@@ -37,6 +37,7 @@ export const resolversTodo = {
     toggleTask: async (_: any, { id }: { id: number }) => {
       const tasksRepository = MyDataSource.getRepository(Task);
       const task = await tasksRepository.findOne({ where: { id } });
+      
       if (!task) {
         throw new Error('Task not found');
       }
